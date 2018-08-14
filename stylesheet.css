@@ -45,8 +45,7 @@ body{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .box{
-  background-color: white;
-  outline: 1px solid rgba(0, 0, 0, .25);
+  outline: 1px solid rgba(0, 0, 0, .2);
   display: inline-block;
   float: left;
 }
@@ -56,7 +55,7 @@ body{
 
 .toolbar{
   height: 100px;
-  width: 500px;
+  width: 600px;
   background-color:  #2e86c1;
   margin-left: auto;
   margin-right: auto;
@@ -67,15 +66,15 @@ body{
   margin: auto 10px;
 }
 
-.resetContainer{
+.clearContainer, .sizeContainer{
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   display: inline-block;
   left: 30px;
-  padding-right: 50px;
 }
-#resetButton{
+
+#clearButton, #sizeButton{
   height: 40px;
   width: 80px;
   background-color: #a569bd;
@@ -87,21 +86,25 @@ body{
   font-size: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
-#resetButton:hover{
+#clearButton:hover, #sizeButton:hover{
   background-color:  #9b59b6;
 }
 
 .opacityContainer{
   height: 50px;
-  width: 100px;
+  width: 200px;
   background-color: white;
   display: inline-block;
+  position: relative;
+  left: 30px;
 }
 .colorContainer{
   height: 50px;
   width: 100px;
   background-color: white;
   display: inline-block;
+  position: relative;
+  left: 30px;
 }
 
 
