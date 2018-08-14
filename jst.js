@@ -1,59 +1,52 @@
-var frameDimension = 480;
-var numBoxPerLine = 16;
-
-const container = document.querySelector(".container");
-container.style.height = frameDimension + "px";
-container.style.width = frameDimension + "px";
-
-function setupPlot(numBoxPerLine){
-  var i = 0;
-  for (i; i < Math.pow(numBoxPerLine, 2); i++){
+// Setting up and drawing the dimensions of the canvas.
+function createCanvas(){
+  canvas.style.height = `${canvasDimension}px`;
+  canvas.style.width = `${canvasDimension}px`;
+}
+//Creating the boxes that will compose the grid structure of the canvas.
+function createBoxes(boxDimension){
+  var totalBoxes = Math.pow(boxDimension, 2);
+  console.log("Hello");
+  console.log(totalBoxes);
+  for(var index = 0; index < totalBoxes; index++){
     const box = document.createElement("div");
-    box.classList.add("plot");
-    box.style.height = (frameDimension/numBoxPerLine) + "px";
-    box.style.width = (frameDimension/numBoxPerLine) + "px";
-    box.addEventListener("mouseover", (e) => {
-      box.style.backgroundColor = getRandomRGB();
-    })
-    container.appendChild(box);
-  }
-
-}
-
-function getRandomRGB(){
-  var redColor = Math.floor(256*Math.random());
-  var greenColor = Math.floor(256*Math.random());
-  var blueColor = Math.floor(256*Math.random());
-  return "rgb(" + redColor + ", " + greenColor + ", " + blueColor + ")";
-}
-
-setupPlot(numBoxPerLine);
-
-const reset = document.getElementById("reset");
-const color = document.getElementById("color");
-const size = document.getElementById("size");
-
-function cleanSlate(){
-  const boxes = document.querySelectorAll(".plot");
-  boxes.forEach(box => box.style.backgroundColor = "white");
-}
-function resizePlot(){
-  var validSize = false;
-  while(validSize === false){
-    var number = prompt("How many boxes per line? Enter a number between 1-100.")
-    if (number > 0 && number < 101){
-      validSize = true;
-    }else{
-      alert("You did not enter a valid number. Try again.");
-    }
-  }
-  deletePlot();
-  setupPlot(number);
-}
-function deletePlot(){
-  while(container.firstChild){
-    container.removeChild(container.firstChild);
+    box.classList.add("box");
+    box.id = index.toString();
+    box.style.height = (canvasDimension/boxDimension) + "px";
+    box.style.width = (canvasDimension/boxDimension) + "px";
+    canvas.appendChild(box);
   }
 }
-reset.addEventListener("click", cleanSlate);
-size.addEventListener("click", resizePlot);
+
+//While the first element in the boxes constant exists, remove it from the array.
+function deleteBoxes(){
+  const boxes = document.getElementsByClassName("box");
+  while(boxes[0]){
+    boxes[0].parentNode.removeChild(boxes[0]);
+  }
+}
+
+
+// const box = document.createElement("div");
+// box.style.backgroundColor = "pink";
+// box.style.height = canvasDimension+"px";
+// box.style.height = canvasDimension+"px";
+// canvas.appendChild(box);
+
+
+
+
+
+
+
+// Initializing Relevant Constants and Variables
+const canvas = document.querySelector(".canvas");
+
+var canvasDimension = 480;
+var boxDimension = 16;
+
+
+// Calling functions
+createCanvas();
+createBoxes(boxDimension);
+// deleteBoxes();
