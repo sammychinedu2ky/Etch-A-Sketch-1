@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <title>Etch-A-Sketch</title>
   <link rel="stylesheet" href="stylesheet.css" />
-  <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
 </head>
 <body>
@@ -19,8 +17,8 @@
 
     </div>
 
-
     <div class="toolbar">
+
       <div class="clearContainer">
         <button type="button" id="clearButton">Clear</button>
       </div>
@@ -29,9 +27,19 @@
       </div>
 
       <div class="opacityContainer">
+        <div class="opacityTitleContainer">
+          <p id="opacityTitle">Opacity Slider</p>
+        </div>
+        <div class="opacityPercentageContainer">
+          <p id="opacityPercentage"></p>
+        </div>
+        <div class="opacityTrackContainer">
+          <input type="range" min="10" max="100" value="50" step="5" class="opacityTrack" />
+        </div>
       </div>
 
       <div class="toggleSwitches">
+
         <div class="eraseContainer">
           <p id="mono">Erase</p>
           <label class="switch">
@@ -39,6 +47,7 @@
             <span class="slider"></span>
           </label>
         </div>
+
         <div class="colorContainer">
           <p id="mono">Mono</p>
           <label class="switch">
@@ -46,6 +55,7 @@
             <span class="slider"></span>
           </label>
         </div>
+
       </div>
 
     </div>
