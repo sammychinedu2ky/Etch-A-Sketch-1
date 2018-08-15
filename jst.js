@@ -18,7 +18,8 @@ function createBoxes(boxDimension){
   }
 }
 
-// Deletes the boxes that currently make up the canvas. Function will be used in tandem with resizing function.
+// Deletes the boxes that currently make up the canvas. Function will be used
+// in tandem with resizing function.
 function deleteBoxes(){
   const boxes = document.getElementsByClassName("box");
   while(boxes[0]){
@@ -32,7 +33,8 @@ function getRandomNumber(){
   return randNumber;
 }
 
-// Returns the expression of rgba with integer values for attributes which is generated with getRandomNumber function and current opacity interval.
+// Returns the expression of rgba with integer values for attributes which is
+// generated with getRandomNumber function and current opacity interval.
 function getRandomRGBA(){
   var red = getRandomNumber();
   var green = getRandomNumber();
@@ -40,7 +42,8 @@ function getRandomRGBA(){
   return `rgba(${red}, ${green}, ${blue}, ${opacityInterval})`;
 }
 
-// Event Listener for boxes in canvas which occur when there is a mouseover. This calls changeColor function with parameter of box.id.
+// Event Listener for boxes in canvas which occur when there is a mouseover.
+// This calls changeColor function with parameter of box.id.
 function boxEventListener() {
   const boxes = document.querySelectorAll(".box");
   boxes.forEach(box => {
@@ -49,7 +52,13 @@ function boxEventListener() {
   })});
 }
 
-// Takes box id and uses it to identify and isolate the mouseovered box. Which the boolean value for the toggle switches of mono and erase, creating conditions accordingly. Erase takes priority and if true will reduce background color opacity until white. If erase not checked then mono comes into effect. If mono is true, background colors on mouse over will not be a random color but black with whatever opacityinterval is current. I used string manipulation to set these values.
+// Takes box id and uses it to identify and isolate the mouseovered box. Which
+// the boolean value for the toggle switches of mono and erase, creating
+// conditions accordingly. Erase takes priority and if true will reduce
+// background color opacity until white. If erase not checked then mono comes
+// into effect. If mono is true, background colors on mouse over will not be a
+// random color but black with whatever opacityinterval is current. I used
+// string manipulation to set these values.
 
 function changeColor(boxId) {
   var box = document.getElementById(boxId);
@@ -114,14 +123,18 @@ function changeColor(boxId) {
 
 }
 
-// Size Event Listener which occurs when the size button is clicked. It calls resizeCanvas on this event.
+// Size Event Listener which occurs when the size button is clicked. It calls
+// resizeCanvas on this event.
 function sizeEventListener(){
   const sizeButton = document.getElementById("sizeButton");
   sizeButton.addEventListener("click", (e) => {
     resizeCanvas();
   });
 }
-// resizeCanvas prompts the user for a new size and checks if it's valid. If so we continue and create a new canvas given the new dimensions. We have to delete the original boxes and recall boxEventListener to make it work properly.
+// resizeCanvas prompts the user for a new size and checks if it's valid. If so
+// we continue and create a new canvas given the new dimensions. We have to
+// delete the original boxes and recall boxEventListener to make it work
+// properly.
 function resizeCanvas(){
   var oldBoxDimension = boxDimension;
   var valid = false;
@@ -145,14 +158,16 @@ function resizeCanvas(){
   }
 }
 
-// Clear Event Listener occurs on click of the clear button which calls clearCanvas function.
+// Clear Event Listener occurs on click of the clear button which calls
+// clearCanvas function.
 function clearEventListener(){
   const clearButton = document.getElementById("clearButton");
   clearButton.addEventListener("click", (e) => {
     clearCanvas();
   })
 }
-// clearCanvas does not change any of the sizing. It only styles the background color to the original white color and effectively "clearing" it.
+// clearCanvas does not change any of the sizing. It only styles the background
+// color to the original white color and effectively "clearing" it.
 function clearCanvas(){
   const boxes = document.querySelectorAll(".box");
   boxes.forEach(box => {
@@ -160,7 +175,8 @@ function clearCanvas(){
   });
 }
 
-// Toggle switches on click will update the global variables of eraseCheck and monoCheck according to the checkbox value.
+// Toggle switches on click will update the global variables of eraseCheck and
+// monoCheck according to the checkbox value.
 function eraseEventListener(){
   const eraseToggle = document.getElementById("eraseCheck");
   eraseToggle.addEventListener("click", (e) => {
@@ -174,7 +190,8 @@ function monoEventListener(){
   });
 }
 
-// Function needed mainly because on soft refresh of page, toggles don't update. So we have to forceful call it in the changeColor function.
+// Function needed mainly because on soft refresh of page, toggles don't
+// update. So we have to forceful call it in the changeColor function.
 function updateCurrentToggles(){
   const eraseToggle = document.getElementById("eraseCheck");
   const monoToggle = document.getElementById("monoCheck");
@@ -182,7 +199,9 @@ function updateCurrentToggles(){
   monoCheck = monoToggle.checked;
 }
 
-// Opacity Event Listener checks the value of the slider and updates the global variable opacityInterval and the label for opacity percentage. The event type is "input" because we want to show the progression of percentage.
+// Opacity Event Listener checks the value of the slider and updates the global
+// variable opacityInterval and the label for opacity percentage. The event
+// type is "input" because we want to show the progression of percentage.
 function opacityEventListener(){
   const opacity = document.querySelector(".opacityTrack");
   const opacityLabel = document.getElementById("opacityPercentage");
@@ -192,7 +211,8 @@ function opacityEventListener(){
   })
 }
 
-//Similar to updateCurrentToggles function, on soft refresh the label values don't update so we have to forcefully update it with this function.
+//Similar to updateCurrentToggles function, on soft refresh the label values
+// don't update so we have to forcefully update it with this function.
 function updateOpacityPercentage(){
   const opacity = document.querySelector(".opacityTrack");
   const opacityLabel = document.getElementById("opacityPercentage");
